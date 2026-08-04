@@ -1,44 +1,99 @@
 # PalForge
 
-A modern Palworld mod manager designed to simplify installing, organizing, and updating mods.
+<p align="center">
 
-> PalForge is currently in early development.
+A modern desktop application for managing Palworld mods.
 
-## Features
+Automatic installation • Dependency resolution • CurseForge integration
+
+</p>
+
+---
+
+## Why PalForge?
+
+Managing Palworld mods shouldn't require memorizing different installation methods.
+
+PalForge automatically detects mod types, installs them into the correct locations, checks dependencies, and helps keep your mods organized.
+
+Whether you're using UE4SS, PalSchema, Blueprint Mods, LogicMods, or Pak Mods, PalForge aims to provide a single, simple workflow.
+
+---
+
+## Current Features
 
 - Automatic mod type detection
-- One-click installation
-- Dependency and conflict awareness
-- UE4SS and PalSchema support
-- LogicMods, Blueprint Mods, and Pak support
-- Local mod database and SHA256 recognition
-- CurseForge integration planned
+- ZIP analysis
+- SHA256 identification
+- Local mod database
+- UE4SS support
+- PalSchema support
+- Blueprint Mods support
+- LogicMods support
+- Pak Mods support
+- Automatic backup before installation
 
-## Roadmap
+---
 
-### Current milestone — 0.1
-- Client-side ZIP installer
-- Framework and mod-type detection
-- Local database matching
-- Backup before overwrite
+## Planned Features
 
-### Next
 - CurseForge API integration
-- Dependency resolution
-- Update checking
-- Installed-mod management
-
-### Future
+- Dependency resolver
+- Conflict detection
+- Automatic updates
+- Mod browser
+- One-click installation
 - Dedicated Server support
-- Profiles and collections
-- Backup and restore tools
+- Mod collections
+- Profiles
+- Backup & Restore
 
-## Status
+---
 
-🟡 Early development
+## Development Roadmap
 
-Public releases will be published on GitHub Releases when ready.
+| Version | Status |
+|---------|--------|
+| Developer Preview 1 | ✅ |
+| Local Database | 🚧 |
+| CurseForge API | ⏳ |
+| Mod Browser | ⏳ |
+| Update Manager | ⏳ |
+
+---
+
+## Philosophy
+
+PalForge is built around three principles.
+
+- Respect mod authors.
+- Always use official sources.
+- Make modding easier for everyone.
+
+PalForge does **not** redistribute mods.
+
+Whenever possible, users are redirected to the original CurseForge project page.
+
+---
+
+## Current Status
+
+🟡 Developer Preview
+
+PalForge is currently under active development.
+
+The project is not feature complete and APIs may change before the first public release.
+
+---
+
+## Screenshots
+
+Coming soon.
+
+---
 
 ## License
 
-Copyright © 2026 PalForge. All rights reserved.
+Copyright © 2026 PalForge.
+
+All rights reserved.
