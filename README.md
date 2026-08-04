@@ -1,6 +1,6 @@
 # PalForge
 
-The open-source Palworld mod manager.
+A modern Palworld mod manager that simplifies installing, organizing, and managing Palworld mods.
 
 ## Features
 
