@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ===========================
+# PalForge
+# ===========================
+
+# Downloaded mods
+workspace/ModsInbox/
+
+# Temporary extracted files
+workspace/Temp/
+
+# Local user settings (future)
+workspace/User/
+
+# VSCode (optional)
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
