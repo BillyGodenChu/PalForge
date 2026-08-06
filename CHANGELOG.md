@@ -6,6 +6,67 @@ The format is based on Keep a Changelog and adapted for the PalForge release cyc
 
 ---
 
+# Alpha 0.1.1
+
+> Architecture update.
+
+## Added
+
+### Controllers
+
+- ScanController
+- InstallController
+- IdentifyController
+- PathController
+
+### Services
+
+- Structured database service
+- Database compatibility adapter
+- Scan result model
+- Install result model
+- Identify result model
+
+---
+
+## Changed
+
+### Architecture
+
+- Database operations are now handled through DatabaseService.
+- Scan workflow is now executed through ScanController.
+- Install workflow is now executed through InstallController.
+- Identify workflow is now executed through IdentifyController.
+- Path handling is now managed through PathController.
+- Legacy database access now uses compatibility adapters.
+
+### User Interface
+
+- Tkinter now acts primarily as the presentation layer.
+- UI delegates business logic to controllers instead of executing it directly.
+- Reduced direct coupling between the UI and application logic.
+
+---
+
+## Refactored
+
+- Introduced structured database models.
+- Unified controller communication.
+- Standardized controller return models.
+- Removed Tkinter dependencies from core application modules.
+- Simplified the responsibility of `tk_main_window.py`.
+- Improved project modularity for future UI migration.
+
+---
+
+## Fixed
+
+- Improved controller error handling.
+- Improved database serialization compatibility.
+- Fixed several legacy controller integration issues.
+
+---
+
 # Alpha 0.1.0
 
 > Initial public development build.
