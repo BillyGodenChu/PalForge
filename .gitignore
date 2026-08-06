@@ -224,13 +224,19 @@ __marimo__/
 # Downloaded mods
 workspace/ModsInbox/
 
-# Temporary extracted files
-workspace/Temp/
+# Temporary cache
+workspace/Cache/
 
-# Local user settings (future)
+# Runtime logs
+workspace/Logs/
+
+# Local backups
+workspace/Backups/
+
+# Local user configuration (future)
 workspace/User/
 
-# VSCode (optional)
+# Visual Studio Code (optional)
 .vscode/
 
 # Windows
