@@ -224,7 +224,10 @@ __marimo__/
 # Downloaded mods
 workspace/ModsInbox/
 
-# Temporary cache
+# Temporary files
+workspace/Temp/
+
+# Runtime cache
 workspace/Cache/
 
 # Runtime logs
@@ -233,7 +236,7 @@ workspace/Logs/
 # Local backups
 workspace/Backups/
 
-# Local user configuration (future)
+# Local user configuration
 workspace/User/
 
 # Visual Studio Code (optional)
