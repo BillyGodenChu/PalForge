@@ -8,6 +8,8 @@ The format is based on Keep a Changelog and adapted for the PalForge release cyc
 
 ## Alpha 0.1.2
 
+> Qt migration and core mod management update.
+
 ### Added
 
 - Added the new PySide6 / Qt desktop interface.
