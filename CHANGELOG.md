@@ -6,6 +6,46 @@ The format is based on Keep a Changelog and adapted for the PalForge release cyc
 
 ---
 
+## Alpha 0.1.2
+
+### Added
+
+- Added the new PySide6 / Qt desktop interface.
+- Added full mod installation support to the Qt interface.
+- Added installed mod detection and the **Installed Mods** viewer.
+- Added installation conflict detection for existing files and folders.
+- Added **Replace**, **Skip Existing**, and **Cancel** conflict handling.
+- Added automatic backups before replacing existing mod files.
+- Added editable identities for mods already registered in the local database.
+- Added manual mod type overrides for automatically detected mods.
+- Added source page actions for identified mods.
+- Added first-launch language selection.
+- Added runtime language switching and persistent language preferences.
+- Added English and Traditional Chinese localization.
+- Added localized UI text, dialogs, tooltips, logs, detection reasons, confidence levels, and structured errors.
+
+### Changed
+
+- Migrated the primary PalForge interface from Tkinter to PySide6 / Qt.
+- Integrated scanning, identification, installation, and installed-mod inspection into the Qt application.
+- Improved the Identify workflow and automatically uses the archive filename when no custom mod name is provided.
+- Improved handling of database-confirmed mod types and manual overrides.
+- Improved installation result handling by moving routine success and failure information into the application log instead of displaying unnecessary result dialogs.
+- Improved game directory validation and path handling.
+- Refactored user-facing text to use localization keys instead of hardcoded strings.
+- Refactored configuration and error handling to better support localization.
+- Cleaned up legacy and unused project files left from earlier development stages.
+
+### Fixed
+
+- Fixed duplicate installation targets being copied without proper conflict handling.
+- Fixed installation conflicts not allowing existing files to be skipped.
+- Fixed several Qt controller integration issues.
+- Fixed Installed Mods not being connected to the main interface.
+- Fixed duplicated and inconsistent UI strings introduced during the Qt migration.
+- Fixed remaining hardcoded user-facing messages across the current interface.
+- Fixed several legacy code paths and compatibility leftovers from the Tkinter implementation.
+- 
 # Alpha 0.1.1
 
 > Architecture update.
