@@ -224,9 +224,6 @@ __marimo__/
 # Downloaded mods
 workspace/ModsInbox/
 
-# Temporary files
-workspace/Temp/
-
 # Runtime cache
 workspace/Cache/
 
