@@ -149,8 +149,3 @@ Coming soon.
 
 ---
 
-## License
-
-Copyright © 2026 PalForge.
-
-All rights reserved.
