@@ -8,12 +8,12 @@ Unlike the CHANGELOG, which records completed work, this roadmap defines the pla
 
 # Project Status
 
-| Item | Status |
-|------|--------|
-| Stage | Alpha |
-| Current Version | Alpha 0.1.1 |
-| Current Phase | Phase 3 — PySide6 Migration |
-| Last Updated | 2026-08-07 |
+| Item            | Status                              |
+| --------------- | ----------------------------------- |
+| Stage           | Alpha                               |
+| Current Version | Alpha 0.1.2                         |
+| Current Phase   | Phase 4 — Modern User Interface     |
+| Last Updated    | 2026-08-11                          |
 
 ---
 
@@ -23,9 +23,12 @@ PalForge follows several core principles throughout development.
 
 - Architecture comes before new features.
 - New functionality should extend the existing architecture instead of bypassing it.
-- Completed modules should not be rewritten unless required for maintenance, migration, bug fixes, or major architectural improvements.
 - Business logic should remain independent from the user interface whenever possible.
-- Every completed milestone should be documented in both CHANGELOG.md and ROADMAP.md.
+- User-facing text should not be hardcoded into application logic.
+- PalForge should avoid silently guessing when an installation decision is uncertain.
+- Existing files should be protected before PalForge replaces them.
+- Completed modules should not be rewritten unless required for maintenance, migration, bug fixes, or major architectural improvements.
+- Major completed milestones should be documented in CHANGELOG.md and reflected in ROADMAP.md.
 
 ---
 
@@ -35,7 +38,7 @@ PalForge follows several core principles throughout development.
 
 ## Objective
 
-Build the initial prototype and establish the project's basic functionality.
+Build the initial PalForge prototype and establish the core local mod workflow.
 
 ## Major Goals
 
@@ -45,9 +48,9 @@ Build the initial prototype and establish the project's basic functionality.
 - Local mod database
 - SHA-256 archive matching
 - Manual Identify workflow
-- Basic installer
+- Basic mod installation
 - Backup system
-- CurseForge API integration
+- Initial CurseForge provider groundwork
 
 ---
 
@@ -57,7 +60,7 @@ Build the initial prototype and establish the project's basic functionality.
 
 ## Objective
 
-Transform the prototype into a modular application.
+Transform the prototype into a modular application that can grow without tying core functionality to a specific interface.
 
 ## Major Goals
 
@@ -66,8 +69,8 @@ Transform the prototype into a modular application.
 - Introduce Providers
 - Introduce Controllers
 - Introduce Services
-- Create unified error hierarchy
-- Introduce localization system
+- Create a unified error hierarchy
+- Introduce the localization system
 - Improve project structure
 
 ---
@@ -78,7 +81,7 @@ Transform the prototype into a modular application.
 
 ## Objective
 
-Separate business logic from the user interface.
+Separate business logic from the user interface and prepare PalForge for migration to a new UI framework.
 
 ## Major Goals
 
@@ -88,7 +91,7 @@ Separate business logic from the user interface.
 - Remove Tkinter dependencies from Core
 - Remove Tkinter dependencies from Controllers
 - Remove Tkinter dependencies from Services
-- Make the UI responsible only for presentation
+- Make the UI responsible primarily for presentation
 
 ## Completion Criteria
 
@@ -96,58 +99,82 @@ Separate business logic from the user interface.
 - Controllers contain no Tkinter code
 - Services contain no Tkinter code
 - Models contain no Tkinter code
-- Business logic is reusable by any future UI framework
+- Business logic can be reused by another UI framework
 
 ---
 
 # Phase 3 — PySide6 Migration
 
-**Status:** ⏳ Planned
+**Status:** ✅ Completed
 
 ## Objective
 
-Replace the legacy Tkinter interface with a modern Qt interface while keeping the existing application architecture unchanged.
+Replace the legacy Tkinter interface with PySide6 / Qt and restore the complete local mod workflow on the new interface.
 
 ## Major Goals
 
 - Introduce PySide6
 - Create the Qt application entry point
-- Create the main window
-- Migrate Scan UI
-- Migrate Install UI
-- Migrate Identify workflow
-- Migrate CurseForge interface
+- Create the Qt main window
+- Migrate archive scanning
+- Migrate mod installation
+- Migrate the Identify workflow
+- Integrate installed mod inspection
+- Add installation conflict handling
+- Add Replace and Skip Existing behavior
+- Integrate automatic backups
+- Add mod type overrides
+- Add editable saved identities
+- Integrate localization into the Qt interface
+- Add first-launch language selection
+- Add persistent language preferences
+- Add runtime language switching
 - Remove the remaining Tkinter implementation
+- Clean up obsolete migration and legacy files
 
 ## Completion Criteria
 
-- Qt becomes the default interface
-- Tkinter implementation is fully removed
-- Existing Controllers require little or no modification
-- Existing Services require no modification
-- Existing Core modules require no modification
+- Qt is the default PalForge interface
+- Tkinter implementation is removed
+- Archive scanning works through the Qt interface
+- Identify works through the Qt interface
+- Supported mods can be installed through the Qt interface
+- Existing installation targets can be handled safely
+- Installed mods can be inspected
+- English and Traditional Chinese interfaces are functional
+- User-facing UI text is routed through the localization system
+- Existing architecture remains separated from the UI framework
 
 ---
 
 # Phase 4 — Modern User Interface
 
-**Status:** ⏳ Planned
+**Status:** 🚧 Current
 
 ## Objective
 
-Provide a modern desktop experience comparable to contemporary game launchers and mod managers.
+Transform the functional Qt interface into the modern PalForge user experience intended for public use.
+
+The current interface proves that the underlying workflow works. Phase 4 focuses on how users interact with that functionality.
 
 ## Major Goals
 
-- Modern layouts
-- Sidebar navigation
-- Toast notifications
-- Progress indicators
-- Better dialogs
-- Responsive resizing
-- Theme support
-- Improved icons
-- Better accessibility
+- Redesign the main application layout
+- Introduce sidebar navigation
+- Introduce the Project view
+- Introduce the Browse view
+- Redesign Installed Mods management
+- Reduce unnecessary buttons and move secondary actions into menus
+- Introduce toast notifications for non-blocking feedback
+- Reserve dialogs for decisions that require user input
+- Add progress indicators for longer operations
+- Improve installation and conflict dialogs
+- Improve responsive resizing
+- Improve visual hierarchy and spacing
+- Add application icons and UI assets
+- Improve accessibility
+- Add theme support
+- Prepare the interface for future provider integration
 
 ---
 
@@ -157,16 +184,24 @@ Provide a modern desktop experience comparable to contemporary game launchers an
 
 ## Objective
 
-Expand PalForge beyond its initial feature set.
+Expand PalForge from a local mod installer into a more complete mod management platform.
 
 ## Major Goals
 
+- CurseForge integration
+- Mod browsing and discovery
+- Direct mod downloads
+- Dependency handling
 - Automatic dependency installation
-- Automatic update detection
-- Better conflict management
+- Mod update detection
+- Mod update management
+- Improved conflict management
+- Improved installed mod management
+- Version compatibility checking
 - Additional mod providers
-- Improved database management
-- Better version compatibility checking
+- Steam and Game Pass platform handling
+- Dedicated Server support
+- Profiles and mod collections
 - Additional quality-of-life improvements
 
 ---
@@ -181,27 +216,33 @@ Prepare PalForge for its first stable public release.
 
 ## Major Goals
 
-- Complete documentation
-- Stable installer
+- Complete user documentation
+- Complete developer documentation
+- Stable application packaging
 - GitHub Releases
-- Automatic updates
+- Application update system
 - Crash reporting
 - Performance optimization
 - Final UI polish
+- Installation and upgrade testing
 - Version 1.0.0 release
 
 ---
 
 # Future Vision
 
-After Version 1.0.0, development may continue in the following areas.
+After Version 1.0.0, PalForge may expand beyond its initial scope.
+
+Potential future areas include:
 
 - Additional mod providers
-- Plugin system
-- Extended metadata support
+- Plugin and extension support
+- Extended mod metadata
 - Cloud synchronization
+- Community-driven integrations
 - Additional game support
-- Community-driven improvements
+
+These items are long-term possibilities rather than committed features.
 
 ---
 
@@ -209,8 +250,8 @@ After Version 1.0.0, development may continue in the following areas.
 
 PalForge maintains separate documents for different purposes.
 
-| Document | Purpose |
-|----------|---------|
-| README.md | Project introduction and user documentation |
-| CHANGELOG.md | Completed changes for each released version |
-| ROADMAP.md | Long-term development plan and project milestones |
+| Document     | Purpose                                           |
+| ------------ | ------------------------------------------------- |
+| README.md    | What PalForge is and what it currently supports   |
+| CHANGELOG.md | Changes completed in each released version        |
+| ROADMAP.md   | Development direction and project milestones      |
