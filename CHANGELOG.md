@@ -46,7 +46,7 @@ The archive scanner, mod detection system, local identity database, installer, b
 
 ---
 
-## Alpha 0.1.2
+# Alpha 0.1.2
 
 > Qt migration and core mod management update.
 
