@@ -1,30 +1,135 @@
 # PalForge
 
-A desktop mod manager for **Palworld**, designed to make installing and managing mods simple, safe, and consistent.
+A diagnostics and testing toolkit for **Palworld** modding.
 
-PalForge analyzes mod archives, identifies how they should be installed, and places them in the correct location without requiring users to understand every Palworld modding framework or folder structure.
+PalForge is designed to help mod users, mod authors, and troubleshooters understand what is actually installed in a modded Palworld environment, identify suspicious configurations, isolate failures, and collect useful diagnostic information when something goes wrong.
 
 > **Status: Developer Preview**
 >
-> PalForge is under active development and is not yet ready for general release.
+> PalForge is under active development.
+> The project is currently being redefined around mod diagnostics, testing, and troubleshooting.
 
 ---
 
 ## What is PalForge?
 
-Palworld mods use several different installation methods.
+Installing a Palworld mod is only part of the problem.
 
-Depending on the mod, users may need to work with UE4SS, PalSchema, LogicMods, Pak files, Blueprint Mods, or other structures — each with different installation locations and requirements.
+A modded Palworld installation may contain mods from Steam Workshop, CurseForge, Nexus Mods, manual installations, or other sources. It may also contain frameworks and dependencies such as UE4SS and PalSchema, as well as files left behind by older installations.
 
-PalForge is designed to bring these different methods into one workflow:
+When something stops working, determining the actual state of the game installation can be difficult.
 
-**Add a mod → Identify it → Review it → Install it**
+PalForge aims to make that process easier.
 
-Instead of manually inspecting archives and copying files into different game directories, PalForge handles the installation structure while keeping the user in control whenever a decision is required.
+Instead of replacing existing mod distribution platforms, PalForge is being developed as a source-independent diagnostics and testing layer for Palworld modding.
+
+The long-term workflow is:
+
+**Inspect → Diagnose → Isolate → Report**
+
+PalForge should help answer questions such as:
+
+- What mods and modding frameworks are actually installed?
+- Where did they come from, when that can be determined?
+- Are multiple or legacy framework installations present?
+- Are files installed in unexpected locations?
+- What changed between a working and broken environment?
+- Which mods should be tested when isolating a failure?
+- What information should be included when reporting a problem to a mod author?
+
+PalForge does not need to replace Steam Workshop, CurseForge, Nexus Mods, or other mod distribution platforms.
+
+Its goal is to understand the final Palworld environment regardless of how the mods arrived there.
 
 ---
 
-## Current Features
+## Current Development Direction
+
+PalForge is currently being redefined around four primary areas.
+
+### Environment Inspection
+
+PalForge will inspect the complete Palworld modding environment rather than only the mods it installed itself.
+
+Planned diagnostics include:
+
+- Installed mod discovery
+- UE4SS installation and version detection
+- PalSchema detection
+- Mixed installation source detection
+- Legacy or duplicate framework detection
+- Unexpected mod files and locations
+- Dependency inspection
+- Game and platform information
+- Relevant log and crash information
+
+The goal is not to assume that every unusual configuration is broken.
+
+PalForge should report what it finds, explain why something may be suspicious, and allow the user or mod author to make the final decision.
+
+### Environment Health
+
+PalForge will use conservative diagnostic rules to highlight configurations that may cause problems.
+
+For example:
+
+- Multiple UE4SS installations
+- Legacy UE4SS loader files
+- Duplicate mods
+- Missing dependencies
+- Mods installed in unexpected locations
+- Mixed manual and managed installations
+- Other environment inconsistencies
+
+Diagnostic findings should distinguish between confirmed problems and potential problems.
+
+PalForge should never claim that two mods are incompatible without sufficient evidence.
+
+### Guided Failure Isolation
+
+When the environment appears valid but a problem remains, PalForge aims to assist with controlled troubleshooting.
+
+Instead of manually enabling and disabling dozens of mods without keeping track of the results, users will be able to run diagnostic sessions that record:
+
+- Which mods were enabled
+- Which mods were disabled
+- Whether the problem was reproduced
+- Previous test results
+- Remaining suspects
+
+For suitable problems, PalForge may use divide-and-test strategies to reduce the number of tests required.
+
+This process is intended to assist troubleshooting, not to guarantee that a single mod is responsible for every failure.
+
+### Diagnostic Reports
+
+PalForge aims to generate structured diagnostic reports that can be shared with mod authors or support communities.
+
+A report may contain information such as:
+
+- Palworld version and platform
+- Installed frameworks and versions
+- Active mod manifest
+- Installation sources when identifiable
+- Environment warnings
+- Relevant configuration information
+- UE4SS logs
+- Crash information
+- Diagnostic session results
+
+The goal is to reduce the amount of back-and-forth required to reproduce and troubleshoot mod-related problems.
+
+Diagnostic exports should clearly show what information will be included and avoid collecting unnecessary personal information.
+
+---
+
+## Existing Foundation
+
+PalForge originally began as a local Palworld mod manager.
+
+That work now provides the foundation for its diagnostics and testing capabilities.
+
+The current Developer Preview already includes:
 
 ### Mod Detection
 
@@ -66,9 +171,9 @@ This allows users to correct an installation type without silently changing save
 
 ### Mod Installation
 
-PalForge installs supported mods directly into the appropriate location inside the Palworld installation.
+PalForge can install supported local mods into the appropriate Palworld location.
 
-The current installer includes:
+The existing installer includes:
 
 - Automatic installation path handling
 - Palworld installation validation
@@ -77,11 +182,13 @@ The current installer includes:
 - Automatic backup before replacement
 - Protection against installing unresolved `Unknown` mods
 
+Installation remains available as a utility, but it is no longer intended to be the primary purpose of PalForge.
+
 ### Installed Mods
 
 PalForge can inspect the current Palworld installation and display detected installed mods.
 
-Installed mod management is currently functional in an early form and will continue to evolve as the project develops.
+This capability will be expanded as part of the new environment inspection and diagnostics system.
 
 ### Localization
 
@@ -94,18 +201,42 @@ The interface language can be selected on first launch and changed later from wi
 
 ---
 
+## What PalForge Is Not
+
+PalForge is not intended to replace:
+
+- Steam Workshop
+- CurseForge
+- Nexus Mods
+- Vortex
+- Other mod distribution platforms
+
+These platforms are better suited for discovering, downloading, publishing, and updating mods.
+
+PalForge instead focuses on what happens after mods from different sources reach the same Palworld installation.
+
+It is also not intended to automatically declare every detected overlap or unusual file a conflict.
+
+Diagnostics should provide evidence, context, and reproducible information rather than guesses presented as facts.
+
+---
+
 ## Project Principles
 
 PalForge is built around a few core principles:
 
-- **Keep mod installation simple.**
+- **Inspect the environment that actually exists.**
 - **Do not silently guess when PalForge is uncertain.**
-- **Give users control over installation decisions.**
+- **Distinguish evidence from suspicion.**
+- **Make troubleshooting reproducible.**
+- **Give users and mod authors useful diagnostic information.**
+- **Remain independent of any single mod distribution source.**
 - **Respect mod authors and original distribution sources.**
 - **Avoid unnecessary modification of the game installation.**
-- **Back up existing files before replacing them.**
+- **Back up files before performing destructive operations.**
+- **Collect only the diagnostic information that is necessary.**
 
-PalForge is intended to manage mods from their original sources rather than independently redistributing third-party mods.
+PalForge is intended to work alongside existing mod platforms rather than independently redistributing third-party mods.
 
 ---
 
@@ -123,7 +254,7 @@ Other Palworld platforms and Dedicated Server management are not currently suppo
 
 PalForge is currently a **Developer Preview**.
 
-The core local mod workflow is functional, including:
+The existing local mod-management foundation is functional, including:
 
 - Archive scanning
 - Mod type detection
@@ -135,9 +266,13 @@ The core local mod workflow is functional, including:
 - Installed mod inspection
 - Localization
 
-The application is still under active development. Its interface, internal APIs, database format, and workflows may change before the first public release.
+The project is now entering a new stage of development focused on validating PalForge as a diagnostics and testing toolkit.
 
-PalForge should currently be considered development software.
+The first priority of this new direction is environment inspection: determining what Palworld, modding frameworks, dependencies, and mods are actually present on the user's system and presenting that information in a useful and trustworthy way.
+
+More advanced concepts such as guided failure isolation, structured support reports, compatibility observations, and deeper diagnostics will be developed only after the underlying diagnostic workflow has been validated.
+
+The application is still under active development. Its interface, internal APIs, database format, diagnostic rules, and workflows may change before the first public release.
 
 For future development plans and milestones, see [ROADMAP.md](ROADMAP.md).
 
@@ -148,4 +283,3 @@ For future development plans and milestones, see [ROADMAP.md](ROADMAP.md).
 Coming soon.
 
 ---
-
